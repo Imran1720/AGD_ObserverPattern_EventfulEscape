@@ -6,13 +6,28 @@ public class PlayerView : MonoBehaviour
     private Rigidbody playerRigidbody;
     private PlayerController playerController;
 
-    private void Start() => playerRigidbody = GetComponent<Rigidbody>();
+    private void Start()
+    {
+        playerRigidbody = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     private void Update()
     {
         playerController.Move(playerRigidbody, transform);
         playerController.Jump(playerRigidbody, transform);
         playerController.Interact();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetMouseButtonDown(0)) // Click to resume
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
