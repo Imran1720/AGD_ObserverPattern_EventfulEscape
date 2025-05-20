@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUIView : MonoBehaviour
 {
@@ -22,10 +22,12 @@ public class GameUIView : MonoBehaviour
     private void OnEnable()
     {
         tryAgainButton.onClick.AddListener(OnTryAgainButtonClicked);
+        EventService.Instance.OnKeyPickedUp.AddListener(updateKeyText);
         quitButton.onClick.AddListener(OnQuitButtonClicked);
     }
+    private void OnDisable() => EventService.Instance.OnKeyPickedUp.RemoveListener(updateKeyText);
     public void UpdateInsanity(float playerSanity) => insanityImage.rectTransform.localScale = new Vector3(1, playerSanity, 1);
-    public void UpdateKeyText() => keysFoundText.SetText($"Keys Found: {GameService.Instance.GetPlayerController().KeysEquipped}/3");
+    private void updateKeyText(int keys) => keysFoundText.SetText($"Keys Found: {keys}/3");
 
     private void OnQuitButtonClicked() => Application.Quit();
     private void OnTryAgainButtonClicked() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
