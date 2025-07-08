@@ -4,6 +4,13 @@
 The player must collect keys to escape a haunted house filled with creepy surprises and dynamically triggered horror events.
 
 ---
+## Gameplay
+
+Click on following image to open Gameplay Video 
+
+[![Image](https://github.com/user-attachments/assets/17eb25eb-b71d-4ee6-ae9d-b4b547ab8ee0)](https://drive.google.com/file/d/1JWrwy3KyGN7KSWB4F-knn5x56EpsLv7W/view?usp=sharing)
+
+---
 
 ## 🧠 What I Learned
 
